@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Layers, Layers3, Timer, ListChecks, LayoutGrid, List } from "lucide-react";
+import { Layers, Layers3, Timer, ListChecks, List, LayoutGrid, Diamond } from "lucide-react";
 import TopHeader from "@/components/layout/TopHeader";
 import { PageContent } from "@/components/common/Card";
 import { MetricCardGrid } from "@/components/common/MetricCard";
-import { DateControl, FilterButton } from "@/components/common/Controls";
-import SearchInput from "@/components/common/SearchInput";
+import { DateControl } from "@/components/common/Controls";
 import PrimaryButton from "@/components/common/PrimaryButton";
 import { UnderlineTabs } from "@/components/common/Tabs";
 import TaskListGroups from "@/components/tables/TaskListGroups";
-import { taskGroups, taskMetrics } from "@/data/mockData";
+import CreateTaskModal from "@/components/tasks/CreateTaskModal";
+import { taskMetrics } from "@/data/mockData";
 
 const metricIcons = {
   "Total Tasks Created": <Layers size={22} />,
@@ -19,44 +19,29 @@ const metricIcons = {
   "Overdue Tasks Count": <Layers3 size={22} />,
 };
 
-function ViewToggle({ view, onChange }) {
-  const item = (key, icon, label) => (
-    <button
-      onClick={() => onChange(key)}
-      className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-[16px] transition-colors ${
-        view === key
-          ? "bg-primary-soft font-medium text-primary"
-          : "text-text-secondary hover:bg-subtle"
-      }`}
-    >
-      {icon}
-      {label}
-    </button>
-  );
-  return (
-    <div className="flex items-center gap-2">
-      {item("list", <List size={18} />, "List View")}
-      {item("table", <LayoutGrid size={18} />, "Table View")}
-    </div>
-  );
-}
+const TABS = [
+  { label: "All Tasks", icon: Layers },
+  { label: "List View", icon: List },
+  { label: "Table View", icon: LayoutGrid },
+  { label: "Kanban View", icon: Diamond },
+];
 
 export default function TasksPage() {
-  const [view, setView] = useState("list");
+  const [tab, setTab] = useState("All Tasks");
+  const [modalOpen, setModalOpen] = useState(false);
   const metrics = taskMetrics.map((m) => ({ ...m, icon: metricIcons[m.label] }));
+
+  const showList = tab === "All Tasks" || tab === "List View";
 
   return (
     <>
       <TopHeader
         title="Task Management"
-        right={<PrimaryButton>Create New</PrimaryButton>}
+        right={<PrimaryButton onClick={() => setModalOpen(true)}>Create New</PrimaryButton>}
       />
       <PageContent>
         <div className="mb-6">
-          <UnderlineTabs
-            tabs={[{ label: "All Tasks", icon: Layers }]}
-            active="All Tasks"
-          />
+          <UnderlineTabs tabs={TABS} active={tab} onChange={setTab} />
         </div>
 
         <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
@@ -71,16 +56,25 @@ export default function TasksPage() {
           <MetricCardGrid items={metrics} />
         </div>
 
-        <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-          <ViewToggle view={view} onChange={setView} />
-          <div className="flex items-center gap-3">
-            <SearchInput className="w-[420px]" />
-            <FilterButton />
-          </div>
-        </div>
+        {showList && <TaskListGroups />}
 
-        <TaskListGroups groups={taskGroups} />
+        {tab === "Table View" && (
+          <div className="rounded-lg border border-border bg-white p-10 text-center text-text-secondary">
+            Table View uses the same task data in a flat table. (List View shows the grouped layout from the screenshots.)
+          </div>
+        )}
+
+        {tab === "Kanban View" && (
+          <div className="rounded-lg border border-dashed border-border bg-subtle p-12 text-center">
+            <p className="text-[18px] font-medium text-text">Kanban View</p>
+            <p className="mt-2 text-text-secondary">
+              No design was provided for this view yet, so it is left as a placeholder.
+            </p>
+          </div>
+        )}
       </PageContent>
+
+      <CreateTaskModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 }

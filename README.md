@@ -45,6 +45,22 @@ src/
     mockData.js   All mock entities and chart datasets
 ```
 
+## Task management features
+
+- **Create Task modal** (Create New button on `/tasks`): functional. Title,
+  description, status / priority / assignee dropdowns, a two-month date picker,
+  and tags. Submitting adds the task to the correct status group.
+- **Task detail page** (`/tasks/[id]`, click any task name): breadcrumb,
+  editable title, a **TipTap** rich-text editor (Bold, Italic, lists, link),
+  a Properties panel, an Activity feed, and a Comments section.
+- **Persistence:** tasks are stored in `localStorage` (key
+  `timeinapp.tasks.v1`) via a React context in
+  `src/components/tasks/TaskStore.jsx`, so created/edited tasks survive a
+  refresh. Clearing site data resets to the seed tasks.
+- The four-tab bar (All Tasks / List View / Table View / Kanban View) matches
+  the newer screenshots. **Kanban View is a placeholder** — no design was
+  provided for it.
+
 ## Notes
 
 - The sidebar switches to the **Users / Authorization** variant on `/leave`,
@@ -59,4 +75,3 @@ src/
 - Interactions implemented: route-aware sidebar, active tabs, list/table toggle,
   request-status filtering on the Leave page, kebab dropdowns, copy-ID buttons,
   collapsible task groups, clickable checkboxes.
-# timer-web-app
