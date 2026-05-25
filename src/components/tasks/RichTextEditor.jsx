@@ -60,7 +60,7 @@ export default function RichTextEditor({ content, onChange }) {
           type="button"
           className="mr-1 inline-flex items-center gap-1 rounded-md px-2 py-1 text-[14px] text-text-secondary hover:bg-subtle"
         >
-          IBM Plex Sans <ChevronDown size={14} />
+          Inter Tight <ChevronDown size={14} />
         </button>
         <span className="mx-1 h-5 w-px bg-border" />
         <Btn title="Bold" active={editor.isActive("bold")} onClick={() => editor.chain().focus().toggleBold().run()}>

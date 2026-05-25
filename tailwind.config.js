@@ -50,7 +50,7 @@ module.exports = {
       fontFamily: {
         sans: [
           "var(--font-sans)",
-          "IBM Plex Sans",
+          "Inter Tight",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
