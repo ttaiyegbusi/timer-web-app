@@ -4,7 +4,7 @@ import AppShell from "@/components/layout/AppShell";
 import { TaskProvider } from "@/components/tasks/TaskStore";
 
 const appFont = localFont({
-  src: "./fonts/InterTight.woff2",
+  src: "./fonts/Inter-Variable.woff2",
   display: "swap",
   variable: "--font-sans",
   weight: "100 900",

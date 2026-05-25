@@ -50,7 +50,7 @@ module.exports = {
       fontFamily: {
         sans: [
           "var(--font-sans)",
-          "Inter Tight",
+          "Inter",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
