@@ -3,11 +3,11 @@ import localFont from "next/font/local";
 import AppShell from "@/components/layout/AppShell";
 import { TaskProvider } from "@/components/tasks/TaskStore";
 
-const inter = localFont({
-  src: "./fonts/Inter-Variable.woff2",
+const plexSans = localFont({
+  src: "./fonts/IBMPlexSans.woff2",
   display: "swap",
-  variable: "--font-inter",
-  weight: "100 900",
+  variable: "--font-sans",
+  weight: "100 700",
 });
 
 export const metadata = {
@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={plexSans.variable}>
       <body>
         <TaskProvider>
           <AppShell>{children}</AppShell>
