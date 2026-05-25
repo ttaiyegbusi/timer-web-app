@@ -57,15 +57,15 @@ body {
     BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
   background: var(--background);
-  /* Moderate tracking — Inter without over-tightening */
-  letter-spacing: -0.006em;
+  /* Matches design spec: Figma -1.5% letter-spacing = -0.015em */
+  letter-spacing: -0.015em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings get a gentle tightening */
+/* Design applies -1.5% uniformly, so headings match the body value */
 h1, h2, h3, h4 {
-  letter-spacing: -0.012em;
+  letter-spacing: -0.015em;
 }
 
 button {
