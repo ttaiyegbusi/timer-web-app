@@ -59,3 +59,4 @@ src/
 - Interactions implemented: route-aware sidebar, active tabs, list/table toggle,
   request-status filtering on the Leave page, kebab dropdowns, copy-ID buttons,
   collapsible task groups, clickable checkboxes.
+# timer-web-app
