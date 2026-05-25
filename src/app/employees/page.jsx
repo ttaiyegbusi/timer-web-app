@@ -47,7 +47,7 @@ export default function EmployeesPage() {
         </div>
 
         <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-          <h2 className="text-[26px] font-semibold text-text">
+          <h2 className="text-[22px] font-semibold text-text">
             Employee Overview
           </h2>
           <div className="flex items-center gap-3">

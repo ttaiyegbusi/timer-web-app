@@ -24,7 +24,7 @@ export function PageContent({ children }) {
 export function SectionTitle({ children, right }) {
   return (
     <div className="mb-5 flex items-center justify-between">
-      <h2 className="text-[26px] font-semibold text-text">{children}</h2>
+      <h2 className="text-[22px] font-semibold text-text">{children}</h2>
       {right ? <div className="flex items-center gap-3">{right}</div> : null}
     </div>
   );

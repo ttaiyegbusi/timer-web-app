@@ -115,7 +115,7 @@ export default function CreateTaskModal({ open, onClose }) {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Task Name"
-          className="w-full text-[28px] font-semibold text-text outline-none placeholder:text-text-muted/50"
+          className="w-full text-[24px] font-semibold text-text outline-none placeholder:text-text-muted/50"
         />
         <textarea
           value={description}

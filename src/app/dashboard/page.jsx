@@ -45,7 +45,7 @@ export default function DashboardPage() {
       <PageContent>
         {/* Greeting row */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-          <h2 className="text-[32px] font-medium">
+          <h2 className="text-[26px] font-medium">
             <span className="text-text-secondary">Good Morning, </span>
             <span className="font-semibold text-text">John Arowoka</span>
           </h2>
@@ -105,7 +105,7 @@ export default function DashboardPage() {
         {/* Attendance table */}
         <div>
           <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-            <h2 className="text-[24px] font-semibold text-text">Attendance</h2>
+            <h2 className="text-[22px] font-semibold text-text">Attendance</h2>
             <div className="flex items-center gap-3">
               <SearchInput className="w-[320px]" />
               <FilterButton />

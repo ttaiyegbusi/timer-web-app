@@ -35,13 +35,13 @@ function NavItem({ item, active }) {
   return (
     <Link
       href={item.href}
-      className={`flex h-[52px] items-center gap-4 rounded-lg px-5 text-[17px] transition-colors ${
+      className={`flex h-11 items-center gap-3 rounded-lg px-4 text-[15px] transition-colors ${
         active
           ? "bg-white font-medium text-[#3B4252] shadow-soft"
           : "text-text-secondary hover:bg-white/60"
       }`}
     >
-      <Icon size={22} strokeWidth={active ? 2 : 1.75} />
+      <Icon size={20} strokeWidth={active ? 2 : 1.75} />
       <span>{item.label}</span>
     </Link>
   );
@@ -49,7 +49,7 @@ function NavItem({ item, active }) {
 
 function SectionLabel({ children, withPlus }) {
   return (
-    <div className="flex items-center justify-between px-5 pb-2 pt-4">
+    <div className="flex items-center justify-between px-4 pb-2 pt-4">
       <div className="flex items-center gap-2">
         {withPlus && <ChevronDown size={16} className="text-text-muted" />}
         <span className="text-xs font-medium uppercase tracking-wider text-text-muted">
@@ -72,7 +72,7 @@ function SimpleNavRow({ icon: Icon, label, href = "#" }) {
   return (
     <Link
       href={href}
-      className="flex h-11 items-center gap-3 rounded-lg px-5 text-[16px] text-text-secondary hover:bg-white/60"
+      className="flex h-11 items-center gap-3 rounded-lg px-4 text-[15px] text-text-secondary hover:bg-white/60"
     >
       <Icon size={20} strokeWidth={1.75} />
       <span>{label}</span>
@@ -98,11 +98,11 @@ export default function Sidebar({ variant = "default" }) {
   return (
     <aside className="sticky top-0 hidden h-screen flex-col border-r border-border bg-sidebar lg:flex">
       {/* Logo */}
-      <div className="flex h-[88px] items-center gap-2 px-7">
-        <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-white">
-          <Timer size={20} />
+      <div className="flex h-[80px] items-center gap-2 px-6">
+        <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-white">
+          <Timer size={18} />
         </span>
-        <span className="text-[26px] font-semibold text-primary">TimeinApp</span>
+        <span className="text-[22px] font-semibold text-primary">TimeinApp</span>
       </div>
 
       {/* Scrollable nav region */}
@@ -139,7 +139,7 @@ export default function Sidebar({ variant = "default" }) {
               {departments.map((d) => (
                 <div
                   key={d.name}
-                  className="flex h-11 items-center gap-3 rounded-lg px-5 text-[16px] text-text-secondary hover:bg-white/60"
+                  className="flex h-11 items-center gap-3 rounded-lg px-4 text-[15px] text-text-secondary hover:bg-white/60"
                 >
                   <span
                     className="h-2.5 w-2.5 rounded-full"

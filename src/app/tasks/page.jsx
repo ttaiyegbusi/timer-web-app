@@ -45,7 +45,7 @@ export default function TasksPage() {
         </div>
 
         <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-          <h2 className="text-[26px] font-semibold text-text">Task Overview</h2>
+          <h2 className="text-[22px] font-semibold text-text">Task Overview</h2>
           <div className="flex items-center gap-3">
             <DateControl>This Month</DateControl>
             <DateControl>Feb. 10th, 2025 - Feb. 20th 2025</DateControl>

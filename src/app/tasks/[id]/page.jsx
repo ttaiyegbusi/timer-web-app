@@ -79,7 +79,7 @@ export default function TaskDetailPage() {
             <input
               value={task.name}
               onChange={(e) => updateTask(task.id, { name: e.target.value })}
-              className="w-full text-[30px] font-semibold text-text outline-none"
+              className="w-full text-[24px] font-semibold text-text outline-none"
             />
             <button className="grid h-8 w-8 place-items-center rounded-md text-text-muted hover:bg-subtle">
               <MoreVertical size={20} />

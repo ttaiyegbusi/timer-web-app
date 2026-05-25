@@ -9,11 +9,11 @@ export function MetricCard({ label, value, trend, dir, icon, last }) {
       }`}
     >
       <div>
-        <p className="text-[16px] text-text-secondary">{label}</p>
-        <p className="mt-1 text-[30px] font-semibold leading-tight text-text">
+        <p className="text-[15px] text-text-secondary">{label}</p>
+        <p className="mt-1.5 text-[26px] font-semibold leading-none text-text">
           {value}
         </p>
-        <p className="mt-2 flex items-center gap-1 text-[14px]">
+        <p className="mt-2.5 flex items-center gap-1 text-[13px]">
           <span
             className={`flex items-center gap-0.5 font-medium ${
               up ? "text-success" : "text-danger"

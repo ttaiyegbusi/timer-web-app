@@ -47,7 +47,7 @@ function TaskRow({ task }) {
       <Checkbox checked={checked} onChange={setChecked} />
       <button
         onClick={() => router.push(`/tasks/${task.id}`)}
-        className="flex-1 truncate text-left text-[17px] text-text hover:text-primary"
+        className="flex-1 truncate text-left text-[16px] text-text hover:text-primary"
       >
         {task.name}
       </button>
@@ -77,7 +77,7 @@ function TaskGroup({ title, label, tasks }) {
       <div className="flex items-center justify-between bg-subtle px-4 py-3">
         <button
           onClick={() => setOpen((o) => !o)}
-          className="flex items-center gap-2 text-[17px] font-medium text-text"
+          className="flex items-center gap-2 text-[16px] font-medium text-text"
         >
           {open ? (
             <ChevronDown size={18} className="text-text-secondary" />

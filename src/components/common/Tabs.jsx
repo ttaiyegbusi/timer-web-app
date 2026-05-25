@@ -11,7 +11,7 @@ export function UnderlineTabs({ tabs, active, onChange }) {
           <button
             key={label}
             onClick={() => onChange?.(label)}
-            className={`-mb-px flex items-center gap-2 border-b-2 pb-3 text-[17px] transition-colors ${
+            className={`-mb-px flex items-center gap-2 border-b-2 pb-3 text-[16px] transition-colors ${
               isActive
                 ? "border-primary font-medium text-primary"
                 : "border-transparent text-text-secondary hover:text-text"
