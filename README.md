@@ -45,6 +45,23 @@ src/
     mockData.js   All mock entities and chart datasets
 ```
 
+## Employee management features
+
+- **Pending Invitations tab** (`/employees`): a table variant showing invited
+  employees with a **Resend Invite** action instead of status/kebab. No
+  overview cards or search on this tab, matching the design.
+- **Employee profile page** (`/employees/[empId]`, click any employee name or
+  "View Profile"): breadcrumb, a tab bar (Profile active; Employment Details /
+  Documents / Agreements are placeholders — no design provided), a header card
+  with avatar/name/role/status and three leave-balance stat cards, then three
+  editable sections — Basic Information, Contact Information, Origin.
+- **Functional editing:** each section has an Edit button that unlocks its
+  fields; clicking Save commits changes to the employee store. Edits persist in
+  `localStorage` (key `timeinapp.employees.v1`) via
+  `src/components/employees/EmployeeStore.jsx`.
+- Every employee has full profile data (Faith matches the screenshot exactly;
+  others get realistic generated values).
+
 ## Task management features
 
 - **Create Task modal** (Create New button on `/tasks`): functional. Title,

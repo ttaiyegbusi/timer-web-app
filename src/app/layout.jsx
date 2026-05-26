@@ -2,6 +2,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import AppShell from "@/components/layout/AppShell";
 import { TaskProvider } from "@/components/tasks/TaskStore";
+import { EmployeeProvider } from "@/components/employees/EmployeeStore";
 
 const appFont = localFont({
   src: "./fonts/Inter-Variable.woff2",
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className={appFont.variable}>
       <body>
         <TaskProvider>
-          <AppShell>{children}</AppShell>
+          <EmployeeProvider>
+            <AppShell>{children}</AppShell>
+          </EmployeeProvider>
         </TaskProvider>
       </body>
     </html>

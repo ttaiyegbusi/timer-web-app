@@ -12,6 +12,7 @@ import PrimaryButton from "@/components/common/PrimaryButton";
 import { UnderlineTabs } from "@/components/common/Tabs";
 import { SimplePagination } from "@/components/common/Pagination";
 import EmployeeTable from "@/components/tables/EmployeeTable";
+import PendingInvitationsTable from "@/components/tables/PendingInvitationsTable";
 import { employeeMetrics } from "@/data/mockData";
 
 const metricIcons = {
@@ -27,6 +28,8 @@ export default function EmployeesPage() {
     ...m,
     icon: metricIcons[m.label],
   }));
+
+  const isPending = tab === "Pending Invitations";
 
   return (
     <>
@@ -46,30 +49,36 @@ export default function EmployeesPage() {
           />
         </div>
 
-        <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-          <h2 className="text-[22px] font-semibold text-text">
-            Employee Overview
-          </h2>
-          <div className="flex items-center gap-3">
-            <DateControl>This Month</DateControl>
-            <DateControl>Feb. 10th, 2025 - Feb. 20th 2025</DateControl>
-          </div>
-        </div>
+        {isPending ? (
+          <PendingInvitationsTable />
+        ) : (
+          <>
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
+              <h2 className="text-[22px] font-semibold text-text">
+                Employee Overview
+              </h2>
+              <div className="flex items-center gap-3">
+                <DateControl>This Month</DateControl>
+                <DateControl>Feb. 10th, 2025 - Feb. 20th 2025</DateControl>
+              </div>
+            </div>
 
-        <div className="mb-6">
-          <MetricCardGrid items={metrics} />
-        </div>
+            <div className="mb-6">
+              <MetricCardGrid items={metrics} />
+            </div>
 
-        <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-          <SearchInput className="w-[640px]" />
-          <div className="flex items-center gap-3">
-            <OutlineButton icon={Upload}>Export</OutlineButton>
-            <FilterButton />
-          </div>
-        </div>
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
+              <SearchInput className="w-[640px]" />
+              <div className="flex items-center gap-3">
+                <OutlineButton icon={Upload}>Export</OutlineButton>
+                <FilterButton />
+              </div>
+            </div>
 
-        <EmployeeTable />
-        <SimplePagination />
+            <EmployeeTable />
+            <SimplePagination />
+          </>
+        )}
       </PageContent>
     </>
   );

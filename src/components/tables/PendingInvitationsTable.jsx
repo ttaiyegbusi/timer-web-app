@@ -1,20 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Eye, UserCog, Trash2 } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Avatar } from "@/components/common/Avatar";
-import { StatusPill } from "@/components/common/Pills";
 import { Checkbox, CopyableId } from "@/components/common/Inputs";
-import KebabMenu from "@/components/common/KebabMenu";
 import { departmentColor } from "@/data/mockData";
 import { useEmployees } from "@/components/employees/EmployeeStore";
 
-export default function EmployeeTable() {
+export default function PendingInvitationsTable() {
   const { employees } = useEmployees();
-  const router = useRouter();
   const [checked, setChecked] = useState({});
   const toggle = (id) => setChecked((c) => ({ ...c, [id]: !c[id] }));
+
+  // Show a subset as "pending" — the design shows 8 rows.
+  const pending = employees.slice(0, 8);
 
   return (
     <div className="overflow-x-auto">
@@ -28,12 +27,11 @@ export default function EmployeeTable() {
             <th className="px-4 py-4 font-medium">Employee Details</th>
             <th className="px-4 py-4 font-medium">Department</th>
             <th className="px-4 py-4 font-medium">Job Title</th>
-            <th className="px-4 py-4 font-medium">Status</th>
-            <th className="rounded-r-lg px-4 py-4 font-medium" />
+            <th className="rounded-r-lg px-4 py-4 font-medium">Action</th>
           </tr>
         </thead>
         <tbody>
-          {employees.map((e) => (
+          {pending.map((e) => (
             <tr key={e.empId} className="border-b border-border-light">
               <td className="px-4 py-4">
                 <Checkbox checked={!!checked[e.empId]} onChange={() => toggle(e.empId)} />
@@ -42,16 +40,13 @@ export default function EmployeeTable() {
                 <CopyableId id={e.id} />
               </td>
               <td className="px-4 py-4">
-                <button
-                  onClick={() => router.push(`/employees/${e.empId}`)}
-                  className="flex items-center gap-3 text-left"
-                >
+                <div className="flex items-center gap-3">
                   <Avatar name={e.name} size={38} />
                   <div>
-                    <p className="text-[16px] font-medium text-text hover:text-primary">{e.name}</p>
+                    <p className="text-[16px] font-medium text-text">{e.name}</p>
                     <p className="text-[14px] text-text-muted">{e.email}</p>
                   </div>
-                </button>
+                </div>
               </td>
               <td className="px-4 py-4">
                 <span className="flex items-center gap-2 text-[16px] text-text">
@@ -64,17 +59,10 @@ export default function EmployeeTable() {
               </td>
               <td className="px-4 py-4 text-[16px] text-text">{e.role}</td>
               <td className="px-4 py-4">
-                <StatusPill status={e.status} />
-              </td>
-              <td className="px-4 py-4">
-                <KebabMenu
-                  header="Action"
-                  items={[
-                    { label: "View Profile", icon: Eye, highlight: true, onClick: () => router.push(`/employees/${e.empId}`) },
-                    { label: "Suspend Employee", icon: UserCog },
-                    { label: "Remove Employee", icon: Trash2, danger: true },
-                  ]}
-                />
+                <button className="inline-flex items-center gap-2 text-[16px] font-medium text-primary hover:underline">
+                  Resend Invite
+                  <Mail size={16} />
+                </button>
               </td>
             </tr>
           ))}
