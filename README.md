@@ -45,6 +45,23 @@ src/
     mockData.js   All mock entities and chart datasets
 ```
 
+## Attendance management features
+
+- **Attendance page** (`/attendance`): the real design — leave-type tabs
+  (Attendance active; the others are placeholders), metric cards (Total
+  Employees, Present, Absent, On Leave), Export Attendance Report, All/Early/Late
+  sub-tabs that filter the table, and the attendance table with an Overtime
+  column.
+- **Add Attendance modal** (functional): multi-select employees, Time In/Out
+  with AM/PM, an **auto-computed Overtime and Early/Late Status** (rules in
+  `AttendanceStore.jsx`: 8-hour standard shift, 7:30 AM on-time cutoff —
+  easy to change), location field, and a Use Geolocation checkbox. Submitting
+  adds one record per selected employee to the table.
+- **Employee Attendance Details** slide-over (click any employee row): header
+  card with avatar/ID/role/department/avg hours, an Attendance Summary, and a
+  monthly log table with prev/next, Export CSV, and Filter.
+- Records persist in `localStorage` (key `timeinapp.attendance.v1`).
+
 ## Employee management features
 
 - **Pending Invitations tab** (`/employees`): a table variant showing invited

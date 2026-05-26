@@ -7,7 +7,8 @@ import KebabMenu from "@/components/common/KebabMenu";
 import { Download, Eye, Trash2 } from "lucide-react";
 import { attendanceRows } from "@/data/mockData";
 
-export default function AttendanceTable() {
+export default function AttendanceTable({ rows, onRowClick }) {
+  const data = rows || attendanceRows;
   return (
     <div className="overflow-x-auto">
       <table className="w-full border-collapse text-left">
@@ -25,23 +26,32 @@ export default function AttendanceTable() {
           </tr>
         </thead>
         <tbody>
-          {attendanceRows.map((r, i) => (
-            <tr key={i} className="border-b border-border-light">
+          {data.map((r, i) => (
+            <tr key={r.id || i} className="border-b border-border-light">
               <td className="px-4 py-3.5">
                 <Checkbox checked={false} />
               </td>
               <td className="px-4 py-3.5">
-                <div className="flex items-center gap-3">
+                <button
+                  onClick={() => onRowClick?.(r)}
+                  className="flex items-center gap-3 text-left"
+                >
                   <Avatar name={r.name} size={36} />
                   <div>
-                    <p className="text-[16px] font-medium text-text">{r.name}</p>
+                    <p className="text-[16px] font-medium text-text hover:text-primary">{r.name}</p>
                     <p className="text-[13px] text-text-muted">{r.role}</p>
                   </div>
-                </div>
+                </button>
               </td>
               <td className="px-4 py-3.5 text-[16px] text-text">{r.clock}</td>
-              <td className="px-4 py-3.5 text-[16px] text-text-secondary">
-                {r.overtime}
+              <td className="px-4 py-3.5">
+                {r.overtime && r.overtime !== "-" ? (
+                  <span className="rounded-md bg-subtle px-2.5 py-1 text-[14px] text-text-secondary">
+                    {r.overtime}
+                  </span>
+                ) : (
+                  <span className="text-[16px] text-text-muted">-</span>
+                )}
               </td>
               <td className="max-w-[280px] px-4 py-3.5 text-[15px] text-text-secondary">
                 {r.location}
@@ -60,7 +70,7 @@ export default function AttendanceTable() {
                   <KebabMenu
                     header="Action"
                     items={[
-                      { label: "View record", icon: Eye, highlight: true },
+                      { label: "View record", icon: Eye, highlight: true, onClick: () => onRowClick?.(r) },
                       { label: "Remove", icon: Trash2, danger: true },
                     ]}
                   />

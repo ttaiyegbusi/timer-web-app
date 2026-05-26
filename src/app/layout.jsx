@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import AppShell from "@/components/layout/AppShell";
 import { TaskProvider } from "@/components/tasks/TaskStore";
 import { EmployeeProvider } from "@/components/employees/EmployeeStore";
+import { AttendanceProvider } from "@/components/attendance/AttendanceStore";
 
 const appFont = localFont({
   src: "./fonts/Inter-Variable.woff2",
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
       <body>
         <TaskProvider>
           <EmployeeProvider>
-            <AppShell>{children}</AppShell>
+            <AttendanceProvider>
+              <AppShell>{children}</AppShell>
+            </AttendanceProvider>
           </EmployeeProvider>
         </TaskProvider>
       </body>
